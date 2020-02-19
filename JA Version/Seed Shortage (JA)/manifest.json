@@ -1,0 +1,41 @@
+{
+  "Name": "Seed Shortage (JA version)",
+  "Author": "Xynerorias",
+  "Version": "1.0.0",
+  "Description": "Removes seeds from usual shop, but not custom shops. Highly configurable. JA version",
+  "UniqueID": "xynerorias.seedshortage",
+  "EntryDll": "SeedShortageJA.dll",
+  "MinimumApiVersion": "3.2.0",
+  "UpdateKeys": [],
+  "Dependencies": [
+    {
+      "UniqueID": "spacechase0.JsonAssets",
+      "IsRequired": true
+    },
+    {
+      "UniqueID": "ppja.moretrees",
+      "IsRequired": false
+    },
+    {
+      "UniqueID": "mizu.flowers",
+      "IsRequired": false
+    },
+    {
+      "UniqueID": "ppja.fruitsandveggies",
+      "IsRequired": false
+    },
+    {
+      "UniqueID": "kildarien.farmertoflorist",
+      "IsRequired": false
+    },
+    {
+      "UniqueID": "ParadigmNomad.FantasyCrops",
+      "IsRequired": false
+    },
+    {
+      "UniqueID": "paradigmnomad.freshmeat",
+      "IsRequired":  false
+    }
+  ] 
+}
+
