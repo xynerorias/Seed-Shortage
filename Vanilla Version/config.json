@@ -1,0 +1,251 @@
+{
+  "PercentDropChanceForMixedSeedsWhenNotFiber": 5,
+  "StardewValley": {
+    "Spring": {
+      "Crops": [
+        {
+          "Name": "Ancient Fruit",
+          "Enabled": false,
+          "Chance": 0
+        },
+        {
+          "Name": "Blue Jazz",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Cauliflower",
+          "Enabled": true,
+          "Chance": 0.5
+        },
+        {
+          "Name": "Coffee Bean",
+          "Enabled": false,
+          "Chance": 0
+        },
+        {
+          "Name": "Garlic",
+          "Enabled": true,
+          "Chance": 0.25
+        },
+        {
+          "Name": "Green Bean",
+          "Enabled": true,
+          "Chance": 0.5
+        },
+        {
+          "Name": "Kale",
+          "Enabled": true,
+          "Chance": 0.5
+        },
+        {
+          "Name": "Parsnip",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Potato",
+          "Enabled": true,
+          "Chance": 0.5
+        },
+        {
+          "Name": "Rhubarb",
+          "Enabled": true,
+          "Chance": 0.1
+        },
+        {
+          "Name": "Rice",
+          "Enabled": true,
+          "Chance": 0.25
+        },
+        {
+          "Name": "Spring Seeds",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Strawberry",
+          "Enabled": true,
+          "Chance": 0.1
+        },
+        {
+          "Name": "Tulip",
+          "Enabled": true,
+          "Chance": 1
+        }
+      ]
+    },
+    "Summer": {
+      "Crops": [
+        {
+          "Name": "Ancient Fruit",
+          "Enabled": false,
+          "Chance": 0
+        },
+        {
+          "Name": "Blueberry",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Corn",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Hops",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Hot Pepper",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Melon",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Poppy",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Radish",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Red Cabbage",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Starfruit",
+          "Enabled": true,
+          "Chance": 0.1
+        },
+        {
+          "Name": "Summer Seeds",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Summer Spangle",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Sunflower",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Tomato",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Wheat",
+          "Enabled": true,
+          "Chance": 1
+        }
+      ]
+    },
+    "Fall": {
+      "Crops": [
+        {
+          "Name": "Ancient Fruit",
+          "Enabled": false,
+          "Chance": 0
+        },
+        {
+          "Name": "Amaranth",
+          "Enabled": true,
+          "Chance": 2
+        },
+        {
+          "Name": "Artichoke",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Beet",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Bok Choy",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Corn",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Cranberries",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Eggplant",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Fall Seeds",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Fairy Rose",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Grape",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Pumpkin",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Sunflower",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Sweet Gem Berry",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Wheat",
+          "Enabled": true,
+          "Chance": 1
+        },
+        {
+          "Name": "Yam",
+          "Enabled": true,
+          "Chance": 1
+        }
+      ]
+    },
+    "Winter": {
+      "Crops": [
+        {
+          "Name": "Winter Seeds",
+          "Enabled": true,
+          "Chance": 1
+        }
+      ]
+    }
+  },
+}
