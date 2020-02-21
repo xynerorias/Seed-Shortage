@@ -61,7 +61,7 @@ If you don't know how to install mods, visit: https://stardewvalleywiki.com/Modd
 -Download the custom seeds mods you want to add and intall them.<br/>
 -Download [Better Mixed Seeds](https://www.nexusmods.com/stardewvalley/mods/3012) and intall it.<br/>
 -Download the JA version of Seed Shortage and drop both folders in the Mods folder.<br/>
--If you want to use my Better Mixed Seeds config (RECOMENDED), launch than close the game first to generate config files, then replace the "config.json" in the Better Mixed Seeds mod with the one provided in the mod download.
+-If you want to use my Better Mixed Seeds config (RECOMENDED), launch then close the game first to generate config files, then replace the "config.json" in the Better Mixed Seeds mod with the one provided in the mod download.
 
 **Vanilla version :**
 
