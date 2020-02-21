@@ -4,8 +4,14 @@
 <h2>| NOT YET FINISHED DO NOT DOWNLOAD |</h2>
 <br/>
 
-A mod for Stardew Valley that removes the seeds from the shops. Instead, players should clean up the farm, go out in the forest and the mines in order to find some new varieties.
-Requires the Better Mixed Seeds mod.
+A mod for Stardew Valley that removes the seeds from the shops. Instead, players should clean up the farm, go out in the forest and the mines in order to find some new varieties.<br/>
+
+It has a Content Pack that replaces the recipe of the Seed Maker to be available in the beginning. Ir requires some copper ore so the player should explore the mine when it's open to. By that time, the first parsnip seeds should be grown and can be used to make some other seeds.<br/>
+
+**Requires the Better Mixed Seeds mod.**<br/>
+
+The mod also has an optional config file that changes the seed drop rate. It is highly recommended to use it for a balanced playthrough. It aims to add some RNG to the game, and make some seeds rare than others. It takes into account the original seed price, the vendor, the seasonal profit of each seeds, and the original seed purchase requirement (being in the second eyar for example).<br/>
+If this is used, it is recommended to not touch the configs of Seed Shortage otherwise some seeds won't be available (e.g: Coffee Bean).
 
 **There are two versions available. Only choose one.**
 
@@ -37,9 +43,10 @@ As said previously, while these are the mods it synergizes with, Seed Shortage i
 
 <h3>Vanilla Version</h3>
 
-Doesn't require anything besides SMAPI which if you are reading this, you already have.
-It's basically the same thing as the JA version but without any modded crops support, and no mod synergy. The content pack only edits the vanilla dialogues, strings, mails etc...
-The mod itself only touches the crops present in the vanilla game and therefore is much lighter.
+Is doesn't require additional mods like Json Assets or other crop mods. Just [SMAPI](smapi.io), Content Patcher to replace the seed maker recipe, some dialogues and other things of the sort, and Better Mixed Seeds to be able to aquire the seeds.<br/>
+
+It's basically the same thing as the JA version but without any modded crops support, and no mod synergy. The content pack only edits the vanilla dialogues, strings, mails etc...<br/>
+The mod itself only touches the crops present in the vanilla game and therefore is much lighter.<br/>
 
 This is meant for people who do not use any custom crops, and people who do not have a heavy mod list, who want to stay close to the vanilla game but still have the added challenge. It still requires Better Mixed Seeds to get the seeds.
 
