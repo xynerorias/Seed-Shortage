@@ -11,12 +11,12 @@
         {
           "Name": "Blue Jazz",
           "Enabled": true,
-          "Chance": 0.75
+          "Chance": 75
         },
         {
           "Name": "Cauliflower",
           "Enabled": true,
-          "Chance": 0.5
+          "Chance": 50
         },
         {
           "Name": "Coffee Bean",
@@ -26,52 +26,52 @@
         {
           "Name": "Garlic",
           "Enabled": true,
-          "Chance": 0.25
+          "Chance": 25
         },
         {
           "Name": "Green Bean",
           "Enabled": true,
-          "Chance": 0.5
+          "Chance": 50
         },
         {
           "Name": "Kale",
           "Enabled": true,
-          "Chance": 0.5
+          "Chance": 50
         },
         {
           "Name": "Parsnip",
           "Enabled": true,
-          "Chance": 1
+          "Chance": 100
         },
         {
           "Name": "Potato",
           "Enabled": true,
-          "Chance": 0.5
+          "Chance": 50
         },
         {
           "Name": "Rhubarb",
           "Enabled": true,
-          "Chance": 0.1
+          "Chance": 10
         },
         {
           "Name": "Rice",
           "Enabled": true,
-          "Chance": 0.25
+          "Chance": 25
         },
         {
           "Name": "Spring Seeds",
           "Enabled": true,
-          "Chance": 1
+          "Chance": 100
         },
         {
           "Name": "Strawberry",
           "Enabled": true,
-          "Chance": 0.1
+          "Chance": 10
         },
         {
           "Name": "Tulip",
           "Enabled": true,
-          "Chance": 0.75
+          "Chance": 75
         }
       ]
     },
@@ -85,72 +85,72 @@
         {
           "Name": "Blueberry",
           "Enabled": true,
-          "Chance": 0.25
+          "Chance": 25
         },
         {
           "Name": "Corn",
           "Enabled": true,
-          "Chance": 1
+          "Chance": 100
         },
         {
           "Name": "Hops",
           "Enabled": true,
-          "Chance": 0.5
+          "Chance": 50
         },
         {
           "Name": "Hot Pepper",
           "Enabled": true,
-          "Chance": 0.5
+          "Chance": 50
         },
         {
           "Name": "Melon",
           "Enabled": true,
-          "Chance": 0.25
+          "Chance": 25
         },
         {
           "Name": "Poppy",
           "Enabled": true,
-          "Chance": 0.25
+          "Chance": 25
         },
         {
           "Name": "Radish",
           "Enabled": true,
-          "Chance": 0.75
+          "Chance": 75
         },
         {
           "Name": "Red Cabbage",
           "Enabled": true,
-          "Chance": 0.1
+          "Chance": 10
         },
         {
           "Name": "Starfruit",
           "Enabled": true,
-          "Chance": 0.1
+          "Chance": 10
         },
         {
           "Name": "Summer Seeds",
           "Enabled": true,
-          "Chance": 1
+          "Chance": 100
         },
         {
           "Name": "Summer Spangle",
           "Enabled": true,
-          "Chance": 0.75
+          "Chance": 75
         },
         {
           "Name": "Sunflower",
           "Enabled": true,
-          "Chance": 1
+          "Chance": 100
         },
         {
           "Name": "Tomato",
           "Enabled": true,
-          "Chance": 0.5
+          "Chance": 50
         },
         {
           "Name": "Wheat",
           "Enabled": true,
-          "Chance": 1
+          "Chance": 100
         }
       ]
     },
@@ -164,62 +164,62 @@
         {
           "Name": "Amaranth",
           "Enabled": true,
-          "Chance": 2
+          "Chance": 150
         },
         {
           "Name": "Artichoke",
           "Enabled": true,
-          "Chance": 0.25
+          "Chance": 25
         },
         {
           "Name": "Beet",
           "Enabled": true,
-          "Chance": 0.5
+          "Chance": 50
         },
         {
           "Name": "Bok Choy",
           "Enabled": true,
-          "Chance": 0.25
+          "Chance": 25
         },
         {
           "Name": "Corn",
           "Enabled": true,
-          "Chance": 1
+          "Chance": 100
         },
         {
           "Name": "Cranberries",
           "Enabled": true,
-          "Chance": 0.1
+          "Chance": 10
         },
         {
           "Name": "Eggplant",
           "Enabled": true,
-          "Chance": 0.5
+          "Chance": 50
         },
         {
           "Name": "Fall Seeds",
           "Enabled": true,
-          "Chance": 1
+          "Chance": 100
         },
         {
           "Name": "Fairy Rose",
           "Enabled": true,
-          "Chance": 0.1
+          "Chance": 10
         },
         {
           "Name": "Grape",
           "Enabled": true,
-          "Chance": 0.25
+          "Chance": 25
         },
         {
           "Name": "Pumpkin",
           "Enabled": true,
-          "Chance": 0.5
+          "Chance": 50
         },
         {
           "Name": "Sunflower",
           "Enabled": true,
-          "Chance": 1
+          "Chance": 100
         },
         {
           "Name": "Sweet Gem Berry",
@@ -229,12 +229,12 @@
         {
           "Name": "Wheat",
           "Enabled": true,
-          "Chance": 1
+          "Chance": 100
         },
         {
           "Name": "Yam",
           "Enabled": true,
-          "Chance": 0.75
+          "Chance": 75
         }
       ]
     },
@@ -243,7 +243,7 @@
         {
           "Name": "Winter Seeds",
           "Enabled": true,
-          "Chance": 1
+          "Chance": 100
         }
       ]
     }
