@@ -64,7 +64,7 @@ namespace SeedShortageVanilla
                 string shopOwner = shopMenu.portraitPerson.Name;
 
                 //Defines Hat-mouse.
-                bool hatmouse = shopMenu != null && shopMenu.potraitPersonDialogue == Game1.parseText(Game1.content.LoadString("String\\StringsFromCSFiles:ShopMenu.cs.11494"));
+                bool hatmouse = shopMenu != null && shopMenu.potraitPersonDialogue == Game1.parseText(Game1.content.LoadString("String\\StringsFromCSFiles:ShopMenu.cs.11494"), Game1.dialogueFont, Game1.tileSize * 5 - Game1.pixelZoom * 4);
 
                 //Assigns the Travelling merchant to be the shop owner when player is in the forest and not talking to Hat Mouse.
                 if (shopMenu.portraitPerson == null && Game1.currentLocation.Name == "Forest" && !hatmouse)
