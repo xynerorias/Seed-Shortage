@@ -138,7 +138,7 @@ namespace SeedShortageJA
                 string shopOwner = shopMenu.portraitPerson.Name;
 
                 //Defines Hat-mouse for easier "shop owner checking" and exclusion for custom shops located in the forest.
-                bool hatmouse = shopMenu != null && shopMenu.potraitPersonDialogue == Game1.parseText(Game1.content.LoadString("String\\StringsFromCSFiles:ShopMenu.cs.11494"));
+                bool hatmouse = shopMenu != null && shopMenu.potraitPersonDialogue == Game1.parseText(Game1.content.LoadString("String\\StringsFromCSFiles:ShopMenu.cs.11494"), Game1.dialogueFont, Game1.tileSize * 5 - Game1.pixelZoom * 4);
 
                 //Assigns Harvey to be the shop owner of the clinic.
                 if (shopMenu.portraitPerson == null && Game1.currentLocation.Name == "Hospital")
