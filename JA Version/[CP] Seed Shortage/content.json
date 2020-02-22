@@ -4,14 +4,9 @@
 		{
 			"Action" : "EditData",
 			"Target" : "Data/CraftingRecipes",
-			"Fields":
+			"Entries":
 			{
-				"Seed Maker" : 
-				{
-					"0" : "388 50 390 20 378 5",
-					"3" : "false",
-					"4" : "1 0"
-				}
+				"Seed Maker" : "388 50 390 20 378 5/Home/25/true/null",	
 			}
 		},
 		{
