@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using StardewModdingAPI;
@@ -49,60 +49,78 @@ namespace SeedShortageJA
                 //Logs the grabbing of IDs as a trace-level log.
                 Monitor.Log("Getting PPJA seeds and saplings IDs...", LogLevel.Trace);
 
-                //Gets the IDs of different JA crops seeds.
-                ID.agaveSeedsID = api.GetObjectId("Blue Agave Seeds");
-                ID.cactusFlowerSeedsID = api.GetObjectId("Cactus Flower Seeds");
-                ID.pinkCatSeedsID = api.GetObjectId("Pink Cat Seeds");
-                ID.aloePodID = api.GetObjectId("Aloe Pod");
-                ID.honeySuckleID = api.GetObjectId("Honeysuckle Starter");
-                ID.beeBalmSeedsID = api.GetObjectId("Bee Balm Seeds");
-                ID.coalSeedsID = api.GetObjectId("Coal Seeds");
-                ID.copperSeedsID = api.GetObjectId("Copper Seeds");
-                ID.ironSeedsID = api.GetObjectId("Iron Seeds");
-                ID.goldSeedsID = api.GetObjectId("Gold Seeds");
-                ID.iridiumSeedsID = api.GetObjectId("Iridium Seeds");
-                ID.doubloonSeedsID = api.GetObjectId("Doubloon Seeds");
-                ID.eucalyptusSaplingID = api.GetObjectId("Eucalyptus Sapling");
-                ID.fragrantWisteriaSaplingID = api.GetObjectId("Fragrant Wisteria Sapling");
-                ID.lemonSaplingID = api.GetObjectId("Lemon Sapling");
-                ID.limeSaplingID = api.GetObjectId("Lime Sapling");
-                ID.melaleucaSaplingID = api.GetObjectId("Melaleuca Sapling");
-                ID.vanillaSaplingID = api.GetObjectId("vanilla Sapling");
-                ID.cocoaSaplingID = api.GetObjectId("Cocoa Sapling");
-                ID.breadfruitSaplingID = api.GetObjectId("Breadfruit Sapling");
-                ID.avocadoSaplingID = api.GetObjectId("Avocado Sapling");
-                ID.bananaSaplingID = api.GetObjectId("Banana Sapling");
-                ID.dragonFruitSaplingID = api.GetObjectId("Dragon Fruit Sapling");
-                ID.papayaSaplingID = api.GetObjectId("Papaya Sapling");
-                ID.durianSaplingID = api.GetObjectId("Durian Sapling");
-                ID.lycheeSaplingID = api.GetObjectId("Lychee Sapling");
-                ID.mangoSaplingID = api.GetObjectId("Mango Sapling");
-                ID.ylangYlangSaplingID = api.GetObjectId("Ylang Ylang Sapling");
-                ID.almondSaplingID = api.GetObjectId("Almond Sapling");
-                ID.asianPearSaplingID = api.GetObjectId("Asian Pear Sapling");
-                ID.cashewSaplingID = api.GetObjectId("Cashew Sapling");
-                ID.grannySmithSaplingID = api.GetObjectId("Granny Smith Sapling");
-                ID.walnutSaplingID = api.GetObjectId("Walnut Sapling");
-                ID.grapefruitSaplingID = api.GetObjectId("Grapefruit Sapling");
-                ID.oliveSaplingID = api.GetObjectId("Olive Sapling");
-                ID.pecanSaplingID = api.GetObjectId("Pecan Sapling");
-                ID.persimmonSaplingID = api.GetObjectId("Persimon Sapling");
-                ID.cinnamonSaplingID = api.GetObjectId("Cinnamon");
-                ID.figSaplingID = api.GetObjectId("Fig Sapling");
-                ID.pearSaplingID = api.GetObjectId("Pear Sapling");
-                ID.pomeloSaplingID = api.GetObjectId("Pomelo Sapling");
-                ID.camphorSaplingID = api.GetObjectId("Camphor Sapling");
-                ID.magnoliaSaplingID = api.GetObjectId("Magnolia Sapling");
-                ID.hibiscusSaplingID = api.GetObjectId("Hibiscus Sapling");
-                ID.jasmineSaplingID = api.GetObjectId("Jasmine Sapling");
-                ID.jerkySaplingID = api.GetObjectId("Jerky Sapling");
-                ID.beefvineSeedsID = api.GetObjectId("Beefvine Seeds");
-                ID.chevonvineSeedsID = api.GetObjectId("Chevonvine Seeds");
-                ID.chickenvineSeedsID = api.GetObjectId("Chickenvine Seeds");
-                ID.duckvineSeedsID = api.GetObjectId("Duckvine Seeds");
-                ID.muttonvineSeedsID = api.GetObjectId("Muttonvine Seeds");
-                ID.porkvineSeedsID = api.GetObjectId("Porkvinevine Seeds");
-                ID.rabbitvineSeedsID = api.GetObjectId("Rabbitvine Seeds");
+                //Get the IDs for Fruit & Veggies
+                
+                    ID.agaveSeedsID = api.GetObjectId("Blue Agave Seeds");
+                    ID.cactusFlowerSeedsID = api.GetObjectId("Cactus Flower Seeds");
+                    ID.aloePodID = api.GetObjectId("Aloe Pod");
+                
+
+                //Get the IDs for Mizu's Flowers
+                
+                    ID.pinkCatSeedsID = api.GetObjectId("Pink Cat Seeds");
+                    ID.honeySuckleID = api.GetObjectId("Honeysuckle Starter");
+                    ID.beeBalmSeedsID = api.GetObjectId("Bee Balm Seeds");
+                
+
+                //Get the IDs for Fantasy Crops
+                
+                    ID.coalSeedsID = api.GetObjectId("Coal Seeds");
+                    ID.copperSeedsID = api.GetObjectId("Copper Seeds");
+                    ID.ironSeedsID = api.GetObjectId("Iron Seeds");
+                    ID.goldSeedsID = api.GetObjectId("Gold Seeds");
+                    ID.iridiumSeedsID = api.GetObjectId("Iridium Seeds");
+                    ID.doubloonSeedsID = api.GetObjectId("Doubloon Seeds");
+                
+
+                //Get the IDs for More Trees
+               
+                    ID.eucalyptusSaplingID = api.GetObjectId("Eucalyptus Sapling");
+                    ID.fragrantWisteriaSaplingID = api.GetObjectId("Fragrant Wisteria Sapling");
+                    ID.lemonSaplingID = api.GetObjectId("Lemon Sapling");
+                    ID.limeSaplingID = api.GetObjectId("Lime Sapling");
+                    ID.melaleucaSaplingID = api.GetObjectId("Melaleuca Sapling");
+                    ID.vanillaSaplingID = api.GetObjectId("vanilla Sapling");
+                    ID.cocoaSaplingID = api.GetObjectId("Cocoa Sapling");
+                    ID.breadfruitSaplingID = api.GetObjectId("Breadfruit Sapling");
+                    ID.avocadoSaplingID = api.GetObjectId("Avocado Sapling");
+                    ID.bananaSaplingID = api.GetObjectId("Banana Sapling");
+                    ID.dragonFruitSaplingID = api.GetObjectId("Dragon Fruit Sapling");
+                    ID.papayaSaplingID = api.GetObjectId("Papaya Sapling");
+                    ID.durianSaplingID = api.GetObjectId("Durian Sapling");
+                    ID.lycheeSaplingID = api.GetObjectId("Lychee Sapling");
+                    ID.mangoSaplingID = api.GetObjectId("Mango Sapling");
+                    ID.ylangYlangSaplingID = api.GetObjectId("Ylang Ylang Sapling");
+                    ID.almondSaplingID = api.GetObjectId("Almond Sapling");
+                    ID.asianPearSaplingID = api.GetObjectId("Asian Pear Sapling");
+                    ID.cashewSaplingID = api.GetObjectId("Cashew Sapling");
+                    ID.grannySmithSaplingID = api.GetObjectId("Granny Smith Sapling");
+                    ID.walnutSaplingID = api.GetObjectId("Walnut Sapling");
+                    ID.grapefruitSaplingID = api.GetObjectId("Grapefruit Sapling");
+                    ID.oliveSaplingID = api.GetObjectId("Olive Sapling");
+                    ID.pecanSaplingID = api.GetObjectId("Pecan Sapling");
+                    ID.persimmonSaplingID = api.GetObjectId("Persimon Sapling");
+                    ID.cinnamonSaplingID = api.GetObjectId("Cinnamon");
+                    ID.figSaplingID = api.GetObjectId("Fig Sapling");
+                    ID.pearSaplingID = api.GetObjectId("Pear Sapling");
+                    ID.pomeloSaplingID = api.GetObjectId("Pomelo Sapling");
+                    ID.camphorSaplingID = api.GetObjectId("Camphor Sapling");
+                    ID.magnoliaSaplingID = api.GetObjectId("Magnolia Sapling");
+                    ID.hibiscusSaplingID = api.GetObjectId("Hibiscus Sapling");
+                    ID.jasmineSaplingID = api.GetObjectId("Jasmine Sapling");
+                
+
+                //Get the IDs for Fresh Meat
+                
+                    ID.jerkySaplingID = api.GetObjectId("Jerky Sapling");
+                    ID.beefvineSeedsID = api.GetObjectId("Beefvine Seeds");
+                    ID.chevonvineSeedsID = api.GetObjectId("Chevonvine Seeds");
+                    ID.chickenvineSeedsID = api.GetObjectId("Chickenvine Seeds");
+                    ID.duckvineSeedsID = api.GetObjectId("Duckvine Seeds");
+                    ID.muttonvineSeedsID = api.GetObjectId("Muttonvine Seeds");
+                    ID.porkvineSeedsID = api.GetObjectId("Porkvinevine Seeds");
+                    ID.rabbitvineSeedsID = api.GetObjectId("Rabbitvine Seeds");
+                 
             }
         }
 
@@ -134,11 +152,15 @@ namespace SeedShortageJA
             //Checks if the menu is a shop menu.
             if (e.NewMenu is ShopMenu shopMenu)
             {
+                //Defines Hat-mouse for easier "shop owner checking" and exclusion for custom shops located in the forest.
+                bool hatmouse = shopMenu != null && shopMenu.potraitPersonDialogue == Game1.parseText(Game1.content.LoadString("Strings\\StringsFromCSFiles:ShopMenu.cs.11494"), Game1.dialogueFont, Game1.tileSize * 5 - Game1.pixelZoom * 4);
+
+                //Returns if the shop owner is Hat Mouse.
+                if (hatmouse)
+                    return;
+
                 //Gets the shop owner's name.
                 string shopOwner = shopMenu.portraitPerson.Name;
-
-                //Defines Hat-mouse for easier "shop owner checking" and exclusion for custom shops located in the forest.
-                bool hatmouse = shopMenu != null && shopMenu.potraitPersonDialogue == Game1.parseText(Game1.content.LoadString("String\\StringsFromCSFiles:ShopMenu.cs.11494"), Game1.dialogueFont, Game1.tileSize * 5 - Game1.pixelZoom * 4);
 
                 //Assigns Harvey to be the shop owner of the clinic.
                 if (shopMenu.portraitPerson == null && Game1.currentLocation.Name == "Hospital")
@@ -148,12 +170,8 @@ namespace SeedShortageJA
                 if (shopMenu.portraitPerson == null && Game1.currentLocation.Name == "Forest" && !hatmouse)
                     shopOwner = "Travelling";
 
-                //Returns if the shop owner is Hat Mouse.
-                if (hatmouse)
-                    return;
-
                 //Null check. Returns if there is no portrait, no name and it's not Hat Mouse.
-                if (shopMenu.portraitPerson == null || shopOwner == null || !hatmouse)
+                if (shopMenu.portraitPerson == null && shopOwner == null && !hatmouse)
                     return;
 
                 //Checks if the shop owner is Pierre.
@@ -174,16 +192,16 @@ namespace SeedShortageJA
                         && !item.Name.Equals("Rabbitvine Seeds"));
                         
                     //Removes seeds from shop except for Strawberry Seeds, all the saplings (vanilla and mods -More Trees/Farmer to Florist-), and the meat seeds (Fresh Meat).
-                    ISalable[] removeQueue = shopMenu.itemPriceAndStock.Keys.Where(seedNoStrawberry =>
+                    /*ISalable[] removeQueue = shopMenu.itemPriceAndStock.Keys.Where(seedNoStrawberry =>
                         seedNoStrawberry is StardewValley.Object obj
                         && obj.Category == StardewValley.Object.SeedsCategory
                         && obj.ParentSheetIndex != 745
                         && obj.ParentSheetIndex != 628
                         && obj.ParentSheetIndex != 629
-                        && obj.ParentSheetIndex !=630
-                        && obj.ParentSheetIndex !=631
-                        && obj.ParentSheetIndex !=632
-                        && obj.ParentSheetIndex !=633
+                        && obj.ParentSheetIndex != 630
+                        && obj.ParentSheetIndex != 631
+                        && obj.ParentSheetIndex != 632
+                        && obj.ParentSheetIndex != 633
                         && obj.ParentSheetIndex != ID.fragrantWisteriaSaplingID
                         && obj.ParentSheetIndex != ID.lemonSaplingID
                         && obj.ParentSheetIndex != ID.limeSaplingID
@@ -210,14 +228,71 @@ namespace SeedShortageJA
                         && obj.ParentSheetIndex != ID.walnutSaplingID
                         && obj.parentSheetIndex != ID.jerkySaplingID
                         && obj.parentSheetIndex != ID.beefvineSeedsID
-                        && obj.parentSheetIndex !=ID.chevonvineSeedsID
-                        && obj.parentSheetIndex !=ID.chickenvineSeedsID
-                        && obj.parentSheetIndex !=ID.duckvineSeedsID
-                        && obj.parentSheetIndex !=ID.muttonvineSeedsID
-                        && obj.parentSheetIndex !=ID.porkvineSeedsID
-                        && obj.parentSheetIndex !=ID.rabbitvineSeedsID).ToArray();
+                        && obj.parentSheetIndex != ID.chevonvineSeedsID
+                        && obj.parentSheetIndex != ID.chickenvineSeedsID
+                        && obj.parentSheetIndex != ID.duckvineSeedsID
+                        && obj.parentSheetIndex != ID.muttonvineSeedsID
+                        && obj.parentSheetIndex != ID.porkvineSeedsID
+                        && obj.parentSheetIndex != ID.rabbitvineSeedsID).ToArray();
                     foreach (ISalable seedNoStrawberry in removeQueue)
-                        shopMenu.itemPriceAndStock.Remove(seedNoStrawberry);
+                        shopMenu.itemPriceAndStock.Remove(seedNoStrawberry);*/
+
+                    if (ID.fragrantWisteriaSaplingID == -1)
+                    {
+                        ISalable[] removeQueue = shopMenu.itemPriceAndStock.Keys.Where(seedNoStrawberry =>
+                        seedNoStrawberry is StardewValley.Object obj
+                        && obj.Category == StardewValley.Object.SeedsCategory
+                        && obj.ParentSheetIndex != 745
+                        && obj.ParentSheetIndex != 628
+                        && obj.ParentSheetIndex != 629
+                        && obj.ParentSheetIndex != 630
+                        && obj.ParentSheetIndex != 631
+                        && obj.ParentSheetIndex != 632
+                        && obj.ParentSheetIndex != 633).ToArray();
+                        foreach (ISalable seedNoStrawberry in removeQueue)
+                            shopMenu.itemPriceAndStock.Remove(seedNoStrawberry);
+                    }
+
+                    else
+                    {
+                        ISalable[] removeQueue1 = shopMenu.itemPriceAndStock.Keys.Where(saplings =>
+                        saplings is StardewValley.Object obj
+                        && obj.Category == StardewValley.Object.SeedsCategory
+                        && obj.ParentSheetIndex != 745
+                        && obj.ParentSheetIndex != 628
+                        && obj.ParentSheetIndex != 629
+                        && obj.ParentSheetIndex != 630
+                        && obj.ParentSheetIndex != 631
+                        && obj.ParentSheetIndex != 632
+                        && obj.ParentSheetIndex != 633
+                        && obj.ParentSheetIndex != ID.fragrantWisteriaSaplingID
+                        && obj.ParentSheetIndex != ID.lemonSaplingID
+                        && obj.ParentSheetIndex != ID.limeSaplingID
+                        && obj.ParentSheetIndex != ID.melaleucaSaplingID
+                        && obj.ParentSheetIndex != ID.vanillaSaplingID
+                        && obj.ParentSheetIndex != ID.cocoaSaplingID
+                        && obj.ParentSheetIndex != ID.avocadoSaplingID
+                        && obj.ParentSheetIndex != ID.almondSaplingID
+                        && obj.ParentSheetIndex != ID.cashewSaplingID
+                        && obj.ParentSheetIndex != ID.asianPearSaplingID
+                        && obj.ParentSheetIndex != ID.grannySmithSaplingID
+                        && obj.ParentSheetIndex != ID.grapefruitSaplingID
+                        && obj.ParentSheetIndex != ID.oliveSaplingID
+                        && obj.ParentSheetIndex != ID.pecanSaplingID
+                        && obj.ParentSheetIndex != ID.persimmonSaplingID
+                        && obj.ParentSheetIndex != ID.cinnamonSaplingID
+                        && obj.ParentSheetIndex != ID.figSaplingID
+                        && obj.ParentSheetIndex != ID.pearSaplingID
+                        && obj.ParentSheetIndex != ID.pomeloSaplingID
+                        && obj.ParentSheetIndex != ID.camphorSaplingID
+                        && obj.ParentSheetIndex != ID.magnoliaSaplingID
+                        && obj.ParentSheetIndex != ID.hibiscusSaplingID
+                        && obj.ParentSheetIndex != ID.jasmineSaplingID
+                        && obj.ParentSheetIndex != ID.walnutSaplingID).ToArray();
+
+                        foreach (ISalable saplings in removeQueue1)
+                            shopMenu.itemPriceAndStock.Remove(saplings);
+                    }
 
                     //Checks if today is the Egg Festival and if Pierre is NOT allowed to have Strawberry Seeds.
                     if (Config.PierreNO_SringFestivalSeeds
@@ -254,7 +329,9 @@ namespace SeedShortageJA
                             && !item.Name.Equals("Rabbitvine Seeds"));
 
                         //Removes meat seeds (Fresh Meat) from shop.
-                        ISalable[] salable = shopMenu.itemPriceAndStock.Keys.Where(meatSeeds =>
+                        if (ID.jerkySaplingID != -1)
+                        {
+                            ISalable[] salable = shopMenu.itemPriceAndStock.Keys.Where(meatSeeds =>
                         meatSeeds is StardewValley.Object obj
                         && obj.Category == StardewValley.Object.SeedsCategory
                         && obj.ParentSheetIndex == ID.beefvineSeedsID
@@ -263,9 +340,12 @@ namespace SeedShortageJA
                         && obj.ParentSheetIndex == ID.duckvineSeedsID
                         && obj.ParentSheetIndex == ID.muttonvineSeedsID
                         && obj.ParentSheetIndex == ID.porkvineSeedsID
-                        && obj.ParentSheetIndex == ID.rabbitvineSeedsID).ToArray();
-                        foreach (ISalable meatSeeds in salable)
-                            shopMenu.itemPriceAndStock.Remove(meatSeeds);
+                        && obj.ParentSheetIndex == ID.rabbitvineSeedsID
+                        && obj.ParentSheetIndex == ID.jerkySaplingID).ToArray();
+                            foreach (ISalable meatSeeds in salable)
+                                shopMenu.itemPriceAndStock.Remove(meatSeeds);
+                        }
+                        else return;
                     }
                 }
 
