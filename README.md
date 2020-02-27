@@ -6,12 +6,13 @@
 
 A mod for Stardew Valley that removes the seeds from the shops. Instead, players should clean up the farm, go out in the forest and the mines in order to find some new varieties.<br/>
 
-It has a Content Pack that replaces the recipe of the Seed Maker to be available in the beginning. Ir requires some copper ore so the player should explore the mine when it's open to. By that time, the first parsnip seeds should be grown and can be used to make some other seeds.<br/>
+It has a Content Pack that replaces the recipe of the Seed Maker to be available in the beginning. It requires some copper ore so the player should explore the mine when it's open to. By that time, the first parsnip seeds should be grown and can be used to make some other seeds.<br/>
+There is another optional version of the Content Pack that makes the seed prices at JojaMart 10x more expensive. If this is used, players should disable JojaMart in the main mod config.
 
 **Requires the Better Mixed Seeds mod.**<br/>
 
-The mod also has an optional config file that changes the seed drop rate. It is highly recommended to use it for a balanced playthrough. It aims to add some RNG to the game, and make some seeds rare than others. It takes into account the original seed price, the vendor, the seasonal profit of each seeds, and the original seed purchase requirement (being in the second eyar for example).<br/>
-If this is used, it is recommended to not touch the configs of Seed Shortage otherwise some seeds won't be available (e.g: Coffee Bean).
+The mod also has an optional config file that changes the seed drop rate. It is highly recommended to use it for a balanced playthrough. It aims to add some RNG to the game, and make some seeds rare than others. It takes into account the original seed price, the vendor, the seasonal profit of each seeds, and the original seed purchase requirement (being in the second year for example).<br/>
+If this is used, it is recommended to not touch the configs of Seed Shortage otherwise some seeds won't be available.
 
 **There are two versions available. Only choose one.**
 
@@ -21,16 +22,16 @@ Requires Json Assets (and by extension, SpaceCore). Compatible with all seed mod
 
 The two main goals was to:
 
-  -Add a slight challenge to the game, prevent snowballing in terms of money, and improve the game's longevity.
-  -Declutter the seed-shop vendors as they become unbearably full when you start to add some custom crops.
+  -Add a slight challenge to the game, prevent snowballing in terms of money, and improve the game's longevity.<br/>
+  -Declutter the seed-shop vendors as they become unbearably full when you start to add some custom crops.<br/>
   
-The mod removes the seeds entirely but only from the shops. That means any mod adding seeds will have them removed in the usual shops but also that custom shops are not restricted by this. You can have a custom shop using Shop Tile Framework selling seeds while the rest of the vanilla shops don't have them. 
+The mod removes the seeds entirely but only from the shops. That means any mod adding seeds will have them removed in the usual shops but also that custom shops are not restricted affected by this. You can have a custom shop using Shop Tile Framework selling seeds while the rest of the vanilla shops don't have them. 
 
 A good example for that is the very thing that made me start this mod: the Seed Catalogue mod. Using this, you can buy seeds but only from crops you have already shipped. So it makes an interesting game of "catch them all" if you are using multiple new crops-adding mods.
 
 While it removes seeds from shops, it adds some configurability. Using [Mousey's PPJA repository](https://mouseypounds.github.io/ppja-ref/crops.html), I added some exceptions to some seeds I thought would make sense. See the Nexus page for reasoning and config explanations.
 
-The mods it synergizes with are:
+The mods it synergizes with are:<br/>
   - Fruits and Veggies for Json Assets
   - More Trees
   - Mizu's Flowers
@@ -38,7 +39,7 @@ The mods it synergizes with are:
   - Fantasy Crops
   - Farmer to Florist
   
-As said previously, while these are the mods it synergizes with, Seed Shortage is still compatible with other seed-adding mods. For more information on mods compatibility, see the Nexus page. The content pack replacing some dialogues and strings has also some synergies but those mods are not required.
+As said previously, while these are the mods it synergizes with, Seed Shortage is still compatible with other seed mods. For more information on mods compatibility, go to the Nexus page. The content pack replacing some dialogues and strings has also some synergies but those mods are not required.
 
 
 <h3>Vanilla Version</h3>
@@ -76,6 +77,7 @@ If you don't know how to install mods, visit: https://stardewvalleywiki.com/Modd
 Here's a list of mods that can pair well with Seed Shortage.
 
 [Stardew Valley Expanded](https://www.nexusmods.com/stardewvalley/mods/3753)'s lower profit margin's config by FlashShifter<br/>
+[Profit Margins](https://www.nexusmods.com/stardewvalley/mods/4663) by CherryChain<br/>
 [Seed Catalogue](https://community.playstarbound.com/resources/seed-catalogue.5090/) by spacechase0<br/>
 [Compost Pests and Cultivation](https://www.nexusmods.com/stardewvalley/mods/4446) by jahangmar<br/>
 [Minerva's Harder Community Center Bundles](https://www.nexusmods.com/stardewvalley/mods/3444) by minervamaga<br/>
