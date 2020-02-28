@@ -1,8 +1,8 @@
-﻿using System.Linq;
-using StardewModdingAPI;
+﻿using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.Menus;
+using System.Linq;
 
 
 namespace SeedShortageVanilla
@@ -60,22 +60,30 @@ namespace SeedShortageVanilla
             //Checks if the menu is a shop menu.
             if (e.NewMenu is ShopMenu shopMenu)
             {
-                //Gets the shop owner's name.
-                string shopOwner = shopMenu.portraitPerson.Name;
-
-                //Defines Hat-mouse.
-                bool hatmouse = shopMenu != null && shopMenu.potraitPersonDialogue == Game1.parseText(Game1.content.LoadString("String\\StringsFromCSFiles:ShopMenu.cs.11494"), Game1.dialogueFont, Game1.tileSize * 5 - Game1.pixelZoom * 4);
-
-                //Assigns the Travelling merchant to be the shop owner when player is in the forest and not talking to Hat Mouse.
-                if (shopMenu.portraitPerson == null && Game1.currentLocation.Name == "Forest" && !hatmouse)
-                    shopOwner = "Travelling";
+                //Defines Hat-mouse for easier "shop owner checking" and exclusion for custom shops located in the forest.
+                bool hatmouse = shopMenu != null && shopMenu.potraitPersonDialogue == Game1.parseText(Game1.content.LoadString("Strings\\StringsFromCSFiles:ShopMenu.cs.11494"), Game1.dialogueFont, Game1.tileSize * 5 - Game1.pixelZoom * 4);
 
                 //Returns if the shop owner is Hat Mouse.
                 if (hatmouse)
                     return;
 
-                //Null check. Returns if there is no portrait, and no name.
-                if (shopMenu.portraitPerson == null || shopOwner == null)
+                //Define "shopOwner" so l.172 doesn't freak out.
+                string shopOwner = "hello";
+
+                //Define "shopOwner" to be the shop owner's name if there's a portrait.
+                if (shopMenu.portraitPerson != null)
+                    shopOwner = shopMenu.portraitPerson.Name;
+
+                //Assigns the Travelling merchant to be the shop owner when player is in the forest and not talking to Hat Mouse.
+                if (shopMenu.portraitPerson == null && Game1.currentLocation.Name == "Forest" && !hatmouse)
+                    shopOwner = "Travelling";
+
+                //Assings "Joja" to be the shop owner of JojaMart.
+                if (shopMenu.portraitPerson == null && Game1.currentLocation.Name == "JojaMart")
+                    shopOwner = "Joja";
+
+                //Null check. Returns if there is no portrait, no name and it's not Hat Mouse. That way custom shops can work.
+                if (shopMenu.portraitPerson == null && shopOwner == null && !hatmouse)
                     return;
 
                 //Checks if the shop owner is Pierre.
@@ -222,6 +230,22 @@ namespace SeedShortageVanilla
                         && obj.parentSheetIndex == 770);
                     if (mixedSeeds != null)
                         shopMenu.itemPriceAndStock.Remove(mixedSeeds);
+                }
+
+                //Checks is JojaMart is NOT allowed to sell seeds.
+                if (Config.JojaEnabled && shopOwner == "Joja")
+                {
+                    //Removes seeds from JojaMart listing.
+                    shopMenu.forSale.RemoveAll((ISalable sale) =>
+                        sale is Item item
+                        && item.Category == StardewValley.Object.SeedsCategory);
+
+                    //Removes seeds from JojaMart.
+                    ISalable[] removeQueue = shopMenu.itemPriceAndStock.Keys.Where(jojaseeds =>
+                        jojaseeds is StardewValley.Object obj
+                        && obj.Category == StardewValley.Object.SeedsCategory).ToArray();
+                    foreach (ISalable jojaseeds in removeQueue)
+                        shopMenu.itemPriceAndStock.Remove(jojaseeds);
                 }
             }
         }
