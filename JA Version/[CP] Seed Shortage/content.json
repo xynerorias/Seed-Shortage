@@ -148,25 +148,8 @@
 				"PelicanTown.38": "Pierre's grass starters are stored in here.",
 				"BlueMoonVineyard.4": "\"BLUE MOON VINYARD: GRAPE SEEDS\"",
 				"SusanHouse.13": "Susan is taking a quota on the next seasonal plants.",
-				"SusanHouse.25": "This box is labeled \"CACTI\"."
+				"SusanHouse.25": "This box is labeled \"MELONS\"."
 			}
-		},
-		{
-			"Action": "EditData",
-        	"Target": "Strings/StringsFromMaps",
-        	"When" :
-        	{
-        		"HasMod" : 
-        		{
-        			"FlashShifter.StardewValleyExpandedCP"
-        			"ppja.moretrees"
-        		}
-        	},
-        	"Entries" :
-        	{
-        		"SusanHouse.25": "This box is labeled \"SAPLINGS\".",
-        		"SusanHouse.13": "Susan is taking a quota on the next seasonal saplings."
-        	}
 		},
 		{
 			"Action" : "EditData",
@@ -200,22 +183,5 @@
         		"Sat": "Hi! Welcome to Sandy's Oasis, the number one destination in Calico Desert!#$e#*whisper* Did I sound professional?$h#$e#Make sure to check out our collection."
         	}
 		},
-		{
-			"Action": "EditData",
-        	"Target": "Characters/Dialogue/Sandy",
-        	"When" :
-        	{
-        		"HasMod" : 
-        		{
-        			"ppja.moretrees"
-        			"gizzymo.canonfriendlyexpansion"
-        		}
-        	},
-        	"Entries" :
-        	{
-        		"Thu8": "I know it doesn't look like it, but business has been decent lately.#$e#Part of it's thanks to you. Cost of living out here is dirt cheap, so just a simple sapling purchase goes a long way!$h",
-        		"Mon": "Hello hello, sweetie!#$b#I'm so glad that the bus is back in service. It was starting to get lonely out here.#$e#...I almost went out of business.$s#$e#Hey, but now you're here to buy a whole bunch of exotic saplings... right, sweetie?$h"
-        	}
-		}
 	]
 }
