@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace SeedShortageJA
 {
     class IDs
     {
         //Stores the IDs of different JA seeds for later use.
+        //If you want to add restrictions to some seeds, add them here, then grab their IDs using the JA api in the main mod.
+        
         public int cactusFlowerSeedsID { get; set; }
         public int agaveSeedsID { get; set; }
         public int pinkCatSeedsID { get; set; }
