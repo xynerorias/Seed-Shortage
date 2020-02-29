@@ -18,7 +18,7 @@ If this is used, it is recommended to not touch the configs of Seed Shortage oth
 
 <h3>JA version:</h3>
 
-Requires Json Assets (and by extension, SpaceCore). Compatible with all seed mods but only synergizes with the PPJA suite and Farmer to Florist.
+Requires Json Assets (and by extension, SpaceCore). Compatible with all seed mods and custom shops.
 
 The two main goals was to:
 
