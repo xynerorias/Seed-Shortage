@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
@@ -72,7 +72,7 @@ namespace SeedShortageJA
                     ID.lemonSaplingID = api.GetObjectId("Lemon Sapling");
                     ID.limeSaplingID = api.GetObjectId("Lime Sapling");
                     ID.melaleucaSaplingID = api.GetObjectId("Melaleuca Sapling");
-                    ID.vanillaSaplingID = api.GetObjectId("vanilla Sapling");
+                    ID.vanillaSaplingID = api.GetObjectId("Vanilla Sapling");
                     ID.cocoaSaplingID = api.GetObjectId("Cocoa Sapling");
                     ID.breadfruitSaplingID = api.GetObjectId("Breadfruit Sapling");
                     ID.avocadoSaplingID = api.GetObjectId("Avocado Sapling");
@@ -91,12 +91,14 @@ namespace SeedShortageJA
                     ID.grapefruitSaplingID = api.GetObjectId("Grapefruit Sapling");
                     ID.oliveSaplingID = api.GetObjectId("Olive Sapling");
                     ID.pecanSaplingID = api.GetObjectId("Pecan Sapling");
-                    ID.persimmonSaplingID = api.GetObjectId("Persimon Sapling");
-                    ID.cinnamonSaplingID = api.GetObjectId("Cinnamon");
+                    ID.persimmonSaplingID = api.GetObjectId("Persimmon Sapling");
+                    ID.cinnamonSaplingID = api.GetObjectId("Cinnamon Sapling");
                     ID.figSaplingID = api.GetObjectId("Fig Sapling");
                     ID.pearSaplingID = api.GetObjectId("Pear Sapling");
                     ID.pomeloSaplingID = api.GetObjectId("Pomelo Sapling");
                     ID.camphorSaplingID = api.GetObjectId("Camphor Sapling");
+
+                //Get the IDs for Farmer to Florist
                     ID.magnoliaSaplingID = api.GetObjectId("Magnolia Sapling");
                     ID.hibiscusSaplingID = api.GetObjectId("Hibiscus Sapling");
                     ID.jasmineSaplingID = api.GetObjectId("Jasmine Sapling");
@@ -148,7 +150,7 @@ namespace SeedShortageJA
                 if (hatmouse)
                     return;
 
-                //Define "shopOwner" so l.172 doesn't freak out.
+                //Define "shopOwner" so l.171 doesn't freak out.
                 string shopOwner = "hello";
 
                 //Define "shopOwner" to be the shop owner's name if there's a portrait.
@@ -189,8 +191,8 @@ namespace SeedShortageJA
                         && !item.Name.Equals("Rabbitvine Seeds"));
 
                     //Removes seeds from shop except for Strawberry Seeds, all the saplings (vanilla and mods -More Trees/Farmer to Florist-), and the meat seeds (Fresh Meat).
-                    ISalable[] removeQueue = shopMenu.itemPriceAndStock.Keys.Where(seedNoStrawberry =>
-                        seedNoStrawberry is StardewValley.Object obj
+                    ISalable[] removeQueue = shopMenu.itemPriceAndStock.Keys.Where(PierreSeeds =>
+                        PierreSeeds is StardewValley.Object obj
                         && obj.Category == StardewValley.Object.SeedsCategory
                         && obj.ParentSheetIndex != 745
                         && obj.ParentSheetIndex != 628
@@ -231,8 +233,8 @@ namespace SeedShortageJA
                         && obj.parentSheetIndex != ID.muttonvineSeedsID
                         && obj.parentSheetIndex != ID.porkvineSeedsID
                         && obj.parentSheetIndex != ID.rabbitvineSeedsID).ToArray();
-                    foreach (ISalable seedNoStrawberry in removeQueue)
-                        shopMenu.itemPriceAndStock.Remove(seedNoStrawberry);
+                    foreach (ISalable PierreSeeds in removeQueue)
+                        shopMenu.itemPriceAndStock.Remove(PierreSeeds);
 
                     //Checks if today is the Egg Festival and if Pierre is NOT allowed to have Strawberry Seeds.
                     if (Config.PierreNO_Strawberry
@@ -260,25 +262,23 @@ namespace SeedShortageJA
                         shopMenu.forSale.RemoveAll((ISalable sale) =>
                             sale is Item item
                             && item.Name.Equals("Beefvine Seeds")
-                            && !item.Name.Equals("Chevonvine Seeds")
-                            && !item.Name.Equals("Chickenvine Seeds")
-                            && !item.Name.Equals("Duckvine Seeds")
-                            && !item.Name.Equals("Muttonvine Seeds")
-                            && !item.Name.Equals("Porkvine Seeds")
-                            && !item.Name.Equals("Rabbitvine Seeds"));
+                            && item.Name.Equals("Chevonvine Seeds")
+                            && item.Name.Equals("Chickenvine Seeds")
+                            && item.Name.Equals("Duckvine Seeds")
+                            && item.Name.Equals("Muttonvine Seeds")
+                            && item.Name.Equals("Porkvine Seeds")
+                            && item.Name.Equals("Rabbitvine Seeds"));
 
                         //Removes meat seeds (Fresh Meat) from shop.
                         ISalable[] salable = shopMenu.itemPriceAndStock.Keys.Where(meatSeeds =>
                             meatSeeds is StardewValley.Object obj
-                            && obj.Category == StardewValley.Object.SeedsCategory
                             && obj.ParentSheetIndex == ID.beefvineSeedsID
                             && obj.ParentSheetIndex == ID.chevonvineSeedsID
                             && obj.ParentSheetIndex == ID.chickenvineSeedsID
                             && obj.ParentSheetIndex == ID.duckvineSeedsID
                             && obj.ParentSheetIndex == ID.muttonvineSeedsID
                             && obj.ParentSheetIndex == ID.porkvineSeedsID
-                            && obj.ParentSheetIndex == ID.rabbitvineSeedsID
-                            && obj.ParentSheetIndex == ID.jerkySaplingID).ToArray();
+                            && obj.ParentSheetIndex == ID.rabbitvineSeedsID).ToArray();
                         foreach (ISalable meatSeeds in salable)
                             shopMenu.itemPriceAndStock.Remove(meatSeeds);
                     }
@@ -476,14 +476,17 @@ namespace SeedShortageJA
                     //Removes Aloe Pod (Fruits & Veggies) from listing.
                     shopMenu.forSale.RemoveAll((ISalable sale) => 
                         sale is Item item 
-                        && item.Name.Equals("Aloe Pod"));
+                        && item.Name.Equals("Aloe Pod")
+                        && item.Name.Equals("Eucalyptus Sapling"));
 
                     //Removes Aloe Pod (Fruits & Veggies) from shop.
-                    ISalable aloePod = shopMenu.itemPriceAndStock.Keys.FirstOrDefault(s => 
-                        s is StardewValley.Object obj 
-                        && obj.parentSheetIndex == ID.aloePodID);
-                    if (aloePod != null)
-                        shopMenu.itemPriceAndStock.Remove(aloePod);
+                    ISalable [] removeQueue = shopMenu.itemPriceAndStock.Keys.Where(harveySeeds => 
+                        harveySeeds is StardewValley.Object obj
+                        && obj.Category == StardewValley.Object.SeedsCategory
+                        && obj.parentSheetIndex == ID.aloePodID
+                        && obj.parentSheetIndex == ID.eucalyptusSaplingID).ToArray();
+                    foreach(ISalable harveySeeds in removeQueue)
+                        shopMenu.itemPriceAndStock.Remove(harveySeeds);
                 }
 
                 //Checks if the shop owner is Clint.
