@@ -1,9 +1,6 @@
 # Seed-Shortage
 
 
-<h2>| NOT YET FINISHED DO NOT DOWNLOAD |</h2>
-<br/>
-
 A mod for Stardew Valley that removes the seeds from the shops. Instead, players should clean up the farm, go out in the forest and the mines in order to find some new varieties.<br/>
 
 It has a Content Pack that replaces the recipe of the Seed Maker to be available in the beginning. It requires some copper ore so the player should explore the mine when it's open to. By that time, the first parsnip seeds should be grown and can be used to make some other seeds.<br/>
