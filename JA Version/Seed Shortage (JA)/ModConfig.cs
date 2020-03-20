@@ -5,11 +5,11 @@
         public bool PierreEnabled { get; set; } = true;
         public bool SandyEnabled { get; set; } = true;
         public bool MarnieEnabled { get; set; } = true;
-        public bool HarveyEnabled { get; set; } = true;
+        public bool HarveyEnabled { get; set; } = false;
         public bool KrobusEnabled { get; set; } = true;
         public bool JojaEnabled { get; set; } = true;
         public bool TravellingEnabled { get; set; } = true;
-        public bool TravellingNO_Coffee { get; set; } = false;
+        public bool TravellingNO_Coffee { get; set; } = true;
         public bool TravellingNO_RareSeed { get; set; } = true;
         public bool PierreNO_Strawberry { get; set; } = false;
         public bool SandyNO_Year3Seeds { get; set; } = false;

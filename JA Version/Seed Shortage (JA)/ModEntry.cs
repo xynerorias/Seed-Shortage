@@ -1,4 +1,5 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
@@ -112,6 +113,8 @@ namespace SeedShortageJA
                     ID.muttonvineSeedsID = api.GetObjectId("Muttonvine Seeds");
                     ID.porkvineSeedsID = api.GetObjectId("Porkvinevine Seeds");
                     ID.rabbitvineSeedsID = api.GetObjectId("Rabbitvine Seeds");
+
+                Monitor.Log("All IDs grabbed !");
             }  
         }
 
@@ -476,17 +479,14 @@ namespace SeedShortageJA
                     //Removes Aloe Pod (Fruits & Veggies) from listing.
                     shopMenu.forSale.RemoveAll((ISalable sale) => 
                         sale is Item item 
-                        && item.Name.Equals("Aloe Pod")
-                        && item.Name.Equals("Eucalyptus Sapling"));
+                        && item.Name.Equals("Aloe Pod"));
 
                     //Removes Aloe Pod (Fruits & Veggies) from shop.
-                    ISalable [] removeQueue = shopMenu.itemPriceAndStock.Keys.Where(harveySeeds => 
-                        harveySeeds is StardewValley.Object obj
-                        && obj.Category == StardewValley.Object.SeedsCategory
-                        && obj.parentSheetIndex == ID.aloePodID
-                        && obj.parentSheetIndex == ID.eucalyptusSaplingID).ToArray();
-                    foreach(ISalable harveySeeds in removeQueue)
-                        shopMenu.itemPriceAndStock.Remove(harveySeeds);
+                    ISalable aloePod = shopMenu.itemPriceAndStock.Keys.FirstOrDefault(s => 
+                        s is StardewValley.Object obj
+                        && obj.parentSheetIndex == ID.aloePodID);
+                    if(aloePod != null)
+                        shopMenu.itemPriceAndStock.Remove(aloePod);
                 }
 
                 //Checks if the shop owner is Clint.
