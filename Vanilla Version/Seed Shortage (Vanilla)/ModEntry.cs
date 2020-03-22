@@ -191,7 +191,7 @@ namespace SeedShortageVanilla
                         //Removes Coffee Bean from listing.
                         shopMenu.forSale.RemoveAll((ISalable sale) =>
                         sale is Item item
-                        && !item.Name.Equals("Coffee Bean"));
+                        && item.Name.Equals("Coffee Bean"));
 
                         //Removes Coffee Bean from shop.
                         ISalable coffeeBean = shopMenu.itemPriceAndStock.Keys.FirstOrDefault(s =>
