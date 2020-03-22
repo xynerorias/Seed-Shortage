@@ -6,6 +6,7 @@
         public bool SandyEnabled { get; set; } = true;
         public bool MarnieEnabled { get; set; } = true;
         public bool HarveyEnabled { get; set; } = false;
+        public bool ClintEnabled { get; set; } = false;
         public bool KrobusEnabled { get; set; } = true;
         public bool JojaEnabled { get; set; } = true;
         public bool TravellingEnabled { get; set; } = true;
@@ -18,6 +19,7 @@
         public bool MarnieNO_Honeysuckle { get; set; } = true;
         public bool MarnieNO_BeeBalm { get; set; } = false;
         public bool ClintNO_CoalSeeds { get; set; } = false;
+        public bool ClintNO_GemSeeds { get; set; } = false;
         public bool KrobusNO_MetalSeeds { get; set; } = false;
         public bool PierreNO_MeatSeeds { get; set; } = false;
     }

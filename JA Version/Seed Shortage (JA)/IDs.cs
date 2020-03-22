@@ -63,5 +63,42 @@ namespace SeedShortageJA
         public int muttonvineSeedsID { get; set; }
         public int porkvineSeedsID { get; set; }
         public int rabbitvineSeedsID { get; set; }
+        public int jujubeSaplingID { get; set; }
+        public int mameysapoteSaplingID { get; set; }
+        public int mangosteenSaplingID { get; set; }
+        public int mayhawSaplingID { get; set; }
+        public int pandanSaplingID { get; set; }
+        public int tamarindSaplingID { get; set; }
+        public int cherimoyaSaplingID { get; set; }
+        public int dateSaplingID { get; set; }
+        public int kolaSaplingID { get; set; }
+        public int nectarineSaplingID { get; set; }
+        public int plantainSaplingID { get; set; }
+        public int purplepulotSaplingID { get; set; }
+        public int bloodorangeSaplingID { get; set; }
+        public int chestnutSaplingID { get; set; }
+        public int cloveSaplingID { get; set; }
+        public int jackfruitSaplingID { get; set; }
+        public int kumquatSaplingID { get; set; }
+        public int pawpawSaplingID { get; set; }
+        public int pistachioSaplingID { get; set; }
+        public int clementineSaplingID { get; set; }
+        public int frozenleafSaplingID { get; set; }
+        public int twistedSaplingID { get; set; }
+        public int stonepineSaplingID { get; set; }
+        public int quinceSaplingID { get; set; }
+        public int aeriniteSeedsID { get; set; }
+        public int aquamarineSeedsID { get; set; }
+        public int celestineSeedsID { get; set; }
+        public int diamondSeedsID { get; set; }
+        public int ghostcrystalSeedsID { get; set; }
+        public int kyaniteSeedsID { get; set; }
+        public int opalSeedsID { get; set; }
+        public int slateSeedsID { get; set; }
+        public int soapstoneSeedsID { get; set; }
+        public int apexbananaSaplingID { get; set; }
+        public int hazelnutSaplingID { get; set; }
+        public int wildplumSaplingID { get; set; }
+        public int coconutSaplingID { get; set; }
     }
 }

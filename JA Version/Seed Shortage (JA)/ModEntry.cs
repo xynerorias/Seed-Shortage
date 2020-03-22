@@ -114,6 +114,57 @@ namespace SeedShortageJA
                     ID.porkvineSeedsID = api.GetObjectId("Porkvinevine Seeds");
                     ID.rabbitvineSeedsID = api.GetObjectId("Rabbitvine Seeds");
 
+                //Get the IDs for Bonster's Trees
+                    ID.jujubeSaplingID = api.GetObjectId("Jujube Sapling");
+                    ID.mameysapoteSaplingID = api.GetObjectId("Mamey Sapote Sapling");
+                    ID.mangosteenSaplingID = api.GetObjectId("Mangosteen Sapling");
+                    ID.mayhawSaplingID = api.GetObjectId("Mayhaw Sapling");
+                    ID.pandanSaplingID = api.GetObjectId("Pandan Sapling");
+                    ID.tamarindSaplingID = api.GetObjectId("Tamarind Sapling");
+                    ID.cherimoyaSaplingID = api.GetObjectId("Cherimoya Sapling");
+                    ID.dateSaplingID = api.GetObjectId("Date Sapling");
+                    ID.plantainSaplingID = api.GetObjectId("Plantain Sapling");
+                    ID.purplepulotSaplingID = api.GetObjectId("Purple Pluot Sapling");
+                    ID.bloodorangeSaplingID = api.GetObjectId("Blood Orange Sapling");
+                    ID.chestnutSaplingID = api.GetObjectId("Chestnut Sapling");
+                    ID.cloveSaplingID = api.GetObjectId("Clove Sapling");
+                    ID.jackfruitSaplingID = api.GetObjectId("Jackfruit Sapling");
+                    ID.pawpawSaplingID = api.GetObjectId("Pawpaw Sapling");
+                    ID.stonepineSaplingID = api.GetObjectId("Stone Pine Sapling");
+                    ID.quinceSaplingID = api.GetObjectId("Quince Sapling");
+
+                //Get the IDs for Gem and Mineral Crops
+                    ID.frozenleafSaplingID = api.GetObjectId("Frozen Leaf Sapling");
+                    ID.aeriniteSeedsID = api.GetObjectId("Aerinite Root Seeds");
+                    ID.aquamarineSeedsID = api.GetObjectId("Aquamarine Rose Seeds");
+                    ID.celestineSeedsID = api.GetObjectId("Celestine Flower Seeds");
+                    ID.diamondSeedsID = api.GetObjectId("Diamond Flower Seed");
+                    ID.ghostcrystalSeedsID = api.GetObjectId("Ghost Rose Seed");
+                    ID.kyaniteSeedsID = api.GetObjectId("Kyanite Flower Seed");
+                    ID.opalSeedsID = api.GetObjectId("Opal Cat Seeds");
+                    ID.slateSeedsID = api.GetObjectId("Slate Bean Seed");
+                    ID.soapstoneSeedsID = api.GetObjectId("Soap Root Seed");
+
+                //Gets the IDs for Mae's Trees
+                ID.nectarineSaplingID = api.GetObjectId("Nectarine Sapling");
+                    ID.kumquatSaplingID = api.GetObjectId("Kumquat Sapling");
+                    ID.pistachioSaplingID = api.GetObjectId("Pistachio Sapling");
+                    ID.clementineSaplingID = api.GetObjectId("Clementine Sapling");
+
+                //Gets the IDs for Revenant's Crops
+                    ID.twistedSaplingID = api.GetObjectId("Twisted Sapling");
+
+                //Gets the ID for Soda Makers
+                    ID.kolaSaplingID = api.GetObjectId("Kola Sapling");
+
+                //Gets the ID of the Starbound Valley's tree sapling
+                    ID.apexbananaSaplingID = api.GetObjectId("Apex Banana Sapling");
+
+                //Gets the IDs for Forage to Farm
+                    ID.hazelnutSaplingID = api.GetObjectId("Hazelnut Sapling");
+                    ID.wildplumSaplingID = api.GetObjectId("Wild Plum Sapling");
+                    ID.coconutSaplingID = api.GetObjectId("Coconut Sapling");
+
                 Monitor.Log("All IDs grabbed !");
             }  
         }
@@ -179,7 +230,7 @@ namespace SeedShortageJA
                 //Checks if the shop owner is Pierre.
                 if (Config.PierreEnabled && shopMenu.portraitPerson != null && shopOwner == "Pierre")
                 {
-                    //Removes seeds from listing except for Strawberry Seeds, all the saplings (vanilla and mods -More Trees/Farmer to Florist-), and the meat seeds (Fresh Meat).
+                    //Removes seeds from listing except for Strawberry Seeds, all the saplings (vanilla and mods), and the meat seeds (Fresh Meat).
                     shopMenu.forSale.RemoveAll((ISalable sale) =>
                         sale is Item item
                         && item.Category == StardewValley.Object.SeedsCategory
@@ -193,7 +244,7 @@ namespace SeedShortageJA
                         && !item.Name.Equals("Porkvine Seeds")
                         && !item.Name.Equals("Rabbitvine Seeds"));
 
-                    //Removes seeds from shop except for Strawberry Seeds, all the saplings (vanilla and mods -More Trees/Farmer to Florist-), and the meat seeds (Fresh Meat).
+                    //Removes seeds from shop except for Strawberry Seeds, all the saplings (vanilla and mods), and the meat seeds (Fresh Meat).
                     ISalable[] removeQueue = shopMenu.itemPriceAndStock.Keys.Where(PierreSeeds =>
                         PierreSeeds is StardewValley.Object obj
                         && obj.Category == StardewValley.Object.SeedsCategory
@@ -235,7 +286,28 @@ namespace SeedShortageJA
                         && obj.parentSheetIndex != ID.duckvineSeedsID
                         && obj.parentSheetIndex != ID.muttonvineSeedsID
                         && obj.parentSheetIndex != ID.porkvineSeedsID
-                        && obj.parentSheetIndex != ID.rabbitvineSeedsID).ToArray();
+                        && obj.parentSheetIndex != ID.rabbitvineSeedsID
+                        && obj.parentSheetIndex != ID.jujubeSaplingID
+                        && obj.parentSheetIndex != ID.mameysapoteSaplingID
+                        && obj.parentSheetIndex != ID.mangosteenSaplingID
+                        && obj.parentSheetIndex != ID.mayhawSaplingID
+                        && obj.parentSheetIndex != ID.tamarindSaplingID
+                        && obj.parentSheetIndex != ID.cherimoyaSaplingID
+                        && obj.parentSheetIndex != ID.kolaSaplingID
+                        && obj.parentSheetIndex != ID.nectarineSaplingID
+                        && obj.parentSheetIndex != ID.purplepulotSaplingID
+                        && obj.parentSheetIndex != ID.bloodorangeSaplingID
+                        && obj.parentSheetIndex != ID.chestnutSaplingID
+                        && obj.parentSheetIndex != ID.cloveSaplingID
+                        && obj.parentSheetIndex != ID.jackfruitSaplingID
+                        && obj.parentSheetIndex != ID.pawpawSaplingID
+                        && obj.parentSheetIndex != ID.pistachioSaplingID
+                        && obj.parentSheetIndex != ID.clementineSaplingID
+                        && obj.parentSheetIndex != ID.twistedSaplingID
+                        && obj.parentSheetIndex != ID.stonepineSaplingID
+                        && obj.parentSheetIndex != ID.quinceSaplingID
+                        && obj.parentSheetIndex != ID.hazelnutSaplingID
+                        && obj.parentSheetIndex != ID.wildplumSaplingID).ToArray();
                     foreach (ISalable PierreSeeds in removeQueue)
                         shopMenu.itemPriceAndStock.Remove(PierreSeeds);
 
@@ -290,7 +362,7 @@ namespace SeedShortageJA
                 //Checks if the shop owner is Sandy.
                 if (Config.SandyEnabled && shopMenu.portraitPerson != null && shopOwner == "Sandy")
                 {
-                    //Removes all seeds from listing except for the Cactus Seeds, her fruit saplings (More Trees) Cactus Flower Seeds (Fruits & Veggies) and Blue Agave Seeds (Fruits & Veggies).
+                    //Removes all seeds from listing except for the Cactus Seeds, her saplings, Cactus Flower Seeds (Fruits & Veggies) and Blue Agave Seeds (Fruits & Veggies).
                     shopMenu.forSale.RemoveAll((ISalable sale) =>
                         sale is Item item
                         && item.Category == StardewValley.Object.SeedsCategory
@@ -299,7 +371,7 @@ namespace SeedShortageJA
                         && !item.Name.Equals("Blue Agave Seeds")
                         && !item.Name.Equals("Cactus Seeds"));
 
-                    //Removes seeds from shop except for the Cactus Seeds, her fruit saplings (More Trees) Cactus Flower Seeds (Fruits & Veggies) and Blue Agave Seeds (Fruits & Veggies).
+                    //Removes seeds from shop except for the Cactus Seeds, her saplings, Cactus Flower Seeds (Fruits & Veggies) and Blue Agave Seeds (Fruits & Veggies).
                     ISalable[] removeQueue = shopMenu.itemPriceAndStock.Keys.Where(seedsNoAgaveCactus =>
                         seedsNoAgaveCactus is StardewValley.Object obj
                         && obj.Category == StardewValley.Object.SeedsCategory
@@ -313,7 +385,13 @@ namespace SeedShortageJA
                         && obj.ParentSheetIndex != ID.durianSaplingID
                         && obj.ParentSheetIndex != ID.lycheeSaplingID
                         && obj.ParentSheetIndex != ID.mangoSaplingID
-                        && obj.ParentSheetIndex != ID.ylangYlangSaplingID).ToArray();
+                        && obj.ParentSheetIndex != ID.ylangYlangSaplingID
+                        && obj.parentSheetIndex != ID.pandanSaplingID
+                        && obj.parentSheetIndex != ID.dateSaplingID
+                        && obj.parentSheetIndex != ID.plantainSaplingID
+                        && obj.parentSheetIndex != ID.kumquatSaplingID
+                        && obj.parentSheetIndex != ID.apexbananaSaplingID
+                        && obj.parentSheetIndex != ID.coconutSaplingID).ToArray();
                     foreach (ISalable seedsNoAgaveCactus in removeQueue)
                         shopMenu.itemPriceAndStock.Remove(seedsNoAgaveCactus);
 
@@ -447,14 +525,14 @@ namespace SeedShortageJA
                     {
                         //Removes Coffee Bean from listing.
                         shopMenu.forSale.RemoveAll((ISalable sale) =>
-                        sale is Item item
-                        && !item.Name.Equals("Coffee Bean"));
+                            sale is Item item
+                            && item.Name.Equals("Coffee Bean"));
 
                         //Removes Coffee Bean from shop.
                         ISalable coffeeBean = shopMenu.itemPriceAndStock.Keys.FirstOrDefault(s => 
-                        s is StardewValley.Object obj 
-                        && obj.parentSheetIndex == 433);
-                        shopMenu.itemPriceAndStock.Remove(coffeeBean);
+                            s is StardewValley.Object obj 
+                            && obj.parentSheetIndex == 433);
+                            shopMenu.itemPriceAndStock.Remove(coffeeBean);
                     }
 
                     //Checks if Travelling Merchant is NOT allowed to sell Rare Seed.
@@ -490,19 +568,68 @@ namespace SeedShortageJA
                 }
 
                 //Checks if the shop owner is Clint.
-                if (Config.ClintNO_CoalSeeds && shopMenu.portraitPerson != null && shopOwner == "Clint")
+                if (Config.ClintEnabled && shopMenu.portraitPerson != null && shopOwner == "Clint")
                 {
-                    //Removes Coal Seeds (Fantasy Crops) from listing.
+                    //Removes seeds except for the saplings, and seeds from Fantasy Crops and Gem and Mineral Crops
                     shopMenu.forSale.RemoveAll((ISalable sale) =>
-                        sale is Item item
-                        && item.Category == StardewValley.Object.SeedsCategory);
+                            sale is Item item
+                            && item.Category == StardewValley.Object.SeedsCategory
+                            && !item.Name.EndsWith("Sapling")
+                            && !item.Name.Equals("Aerinite Root Seeds")
+                            && !item.Name.Equals("Aquamarine Rose Seeds")
+                            && !item.Name.Equals("Celestine Flower Seeds")
+                            && !item.Name.Equals("Diamond Flower Seed")
+                            && !item.Name.Equals("Ghost Rose Seed")
+                            && !item.Name.Equals("Kyanite Flower Seed")
+                            && !item.Name.Equals("Opal Cat Seeds")
+                            && !item.Name.Equals("Slate Bean Seed")
+                            && !item.Name.Equals("Soap Root Seed"));
 
-                    //Removes Coal Seeds (Fantasy Crops) from shop.
-                    ISalable coalSeed = shopMenu.itemPriceAndStock.Keys.FirstOrDefault(s => 
-                        s is StardewValley.Object obj 
-                        && obj.parentSheetIndex == ID.coalSeedsID);
-                    if (coalSeed != null)
-                        shopMenu.itemPriceAndStock.Remove(coalSeed);
+                    if (Config.ClintNO_CoalSeeds)
+                    {
+                        //Removes Coal Seeds (Fantasy Crops) from listing.
+                        shopMenu.forSale.RemoveAll((ISalable sale) =>
+                            sale is Item item
+                            && item.Name.Equals("Coal Seeds"));
+
+                        //Removes Coal Seeds (Fantasy Crops) from shop.
+                        ISalable coalSeed = shopMenu.itemPriceAndStock.Keys.FirstOrDefault(s =>
+                            s is StardewValley.Object obj
+                            && obj.parentSheetIndex == ID.coalSeedsID);
+                        if (coalSeed != null)
+                            shopMenu.itemPriceAndStock.Remove(coalSeed);
+                    }
+
+                    if (Config.ClintNO_GemSeeds)
+                    {
+                        //Removes gem seeds (Gem and Mineral Crops) from listing
+                        shopMenu.forSale.RemoveAll((ISalable sale) =>
+                            sale is Item item
+                            && item.Name.Equals("Aerinite Root Seeds")
+                            && item.Name.Equals("Aquamarine Rose Seeds")
+                            && item.Name.Equals("Celestine Flower Seeds")
+                            && item.Name.Equals("Diamond Flower Seed")
+                            && item.Name.Equals("Ghost Rose Seed")
+                            && item.Name.Equals("Kyanite Flower Seed")
+                            && item.Name.Equals("Opal Cat Seeds")
+                            && item.Name.Equals("Slate Bean Seed")
+                            && item.Name.Equals("Soap Root Seed"));
+
+                        //Removes gem seeds (Gem and Mineral Crops) from shop
+                        ISalable[] removeQueue = shopMenu.itemPriceAndStock.Keys.Where(gemSeeds =>
+                            gemSeeds is StardewValley.Object obj
+                            && obj.ParentSheetIndex == ID.aeriniteSeedsID
+                            && obj.ParentSheetIndex == ID.aquamarineSeedsID
+                            && obj.ParentSheetIndex == ID.celestineSeedsID
+                            && obj.ParentSheetIndex == ID.diamondSeedsID
+                            && obj.ParentSheetIndex == ID.ghostcrystalSeedsID
+                            && obj.ParentSheetIndex == ID.kyaniteSeedsID
+                            && obj.ParentSheetIndex == ID.opalSeedsID
+                            && obj.ParentSheetIndex == ID.slateSeedsID
+                            && obj.ParentSheetIndex == ID.soapstoneSeedsID).ToArray();
+                        foreach (ISalable gemSeeds in removeQueue)
+                            shopMenu.itemPriceAndStock.Remove(gemSeeds);
+                    }
                 }
 
                 //Checks if Krobus is the shop owner.
