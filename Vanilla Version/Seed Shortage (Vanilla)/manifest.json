@@ -1,7 +1,7 @@
 {
   "Name": "Seed Shortage (Vanilla version)",
   "Author": "Xynerorias",
-  "Version": "1.0.0",
+  "Version": "1.0.2",
   "Description": "Removes seeds from usual shop, but not custom shops. Highly configurable. Vanilla version",
   "UniqueID": "xynerorias.seedshortage",
   "EntryDll": "SeedShortageVanilla.dll",
