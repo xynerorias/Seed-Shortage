@@ -30,7 +30,6 @@ While it removes seeds from shops, it adds some configurability. Using [Mousey's
 
 The mods it synergizes with are:<br/>
   - Fruits and Veggies for Json Assets
-  - More Trees
   - Mizu's Flowers
   - Fresh Meat - An Alternative Butcher Mod
   - Fantasy Crops
