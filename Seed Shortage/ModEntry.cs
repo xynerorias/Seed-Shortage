@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
@@ -128,7 +128,6 @@ namespace SeedShortage
                             if (now.Name.EndsWith("Seeds") || now.Name.EndsWith("Bulb") || now.Name.EndsWith("Starter") && !now.Name.Equals("Grass Starter"))
                                 array[0] = this.NewPrice(price);
                         }
-                        
                     }
 
                     List<ISalable> seeds = itemPriceAndStock.Keys.Where(item =>
