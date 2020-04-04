@@ -15,7 +15,7 @@ namespace SeedShortage
     public class ModEntry : StardewModdingAPI.Mod
     {
         private ModConfig config;
-        private List<int> Exclusions = new List<int>();
+        private List<int> exclusions = new List<int>();
 
         /// <summary>The mod entry point, called after the mod is first loaded.</summary>
         /// <param name="helper">Provides simplified APIs for writing mods.</param>
@@ -48,19 +48,20 @@ namespace SeedShortage
 
             IApi api = Helper.ModRegistry.GetApi<IApi>("spacechase0.JsonAssets");
             Dictionary<string,int> VanillaSeeds = new Dictionary<string, int>(ID.Dict);
-            List<string> exceptions = new List<string>(config.Exceptions.ToList());
+            List<string> exceptions = new List<string>(config.CropExceptions.ToList());
             var NewList = exceptions.Where(s => VanillaSeeds.ContainsKey(s)).ToList();
             var dict = VanillaSeeds.Where(kvp => NewList.Contains(kvp.Key)).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
-            this.Exclusions = new List<int>(dict.Values);
+
+            this.exclusions = new List<int>(dict.Values);
 
             foreach (string item in NewList)
                 exceptions.Remove(item);
 
             if(api != null)
             foreach (string ex in exceptions)
-                this.Exclusions.Add(api.GetObjectId(ex));
+                this.exclusions.Add(api.GetObjectId(ex));
 
-            string log = string.Join(",", this.Exclusions.ToArray());
+            string log = string.Join(",", this.exclusions.ToArray());
             Monitor.Log("IDs marked as exception: " + log, LogLevel.Trace);
 
             Monitor.Log("All IDs grabbed !", LogLevel.Debug);
@@ -87,335 +88,92 @@ namespace SeedShortage
         {
             if (e.NewMenu is ShopMenu shopMenu)
             {
+                string shopOwner = null;
+
                 bool hatmouse = shopMenu != null && shopMenu.potraitPersonDialogue == Game1.parseText(Game1.content.LoadString("Strings\\StringsFromCSFiles:ShopMenu.cs.11494"), Game1.dialogueFont, Game1.tileSize * 5 - Game1.pixelZoom * 4);
                 bool magicboat = shopMenu != null && shopMenu.potraitPersonDialogue == Game1.parseText(Game1.content.LoadString("Strings\\StringsFromCSFiles:ShopMenu.cs.magicBoat"), Game1.dialogueFont, Game1.tileSize * 5 - Game1.pixelZoom * 4);
                 bool travelnight = shopMenu != null && shopMenu.potraitPersonDialogue == Game1.parseText(Game1.content.LoadString("Strings\\StringsFromCSFiles:ShopMenu.cs.travelernightmarket"), Game1.dialogueFont, Game1.tileSize * 5 - Game1.pixelZoom * 4);
-                string shopOwner = null;
 
                 if (shopMenu.portraitPerson != null)
                     shopOwner = shopMenu.portraitPerson.Name;
                 if (shopMenu.portraitPerson == null && Game1.currentLocation.Name == "Hospital")
                     shopOwner = "Harvey";
-                if (shopMenu.portraitPerson == null && Game1.currentLocation.Name == "Forest" && !hatmouse)
-                    shopOwner = "Travelling";
+                if ((shopMenu.portraitPerson == null && Game1.currentLocation.Name == "Forest" && !hatmouse) || (shopMenu.portraitPerson == null && travelnight))
+                    shopOwner = "Travelling Merchant";
                 if (Game1.currentLocation.Name == "JojaMart")
                     shopOwner = "Joja";
                 if (magicboat)
                     shopOwner = "Magic Boat";
-                if (hatmouse)
-                    return;
-                if (shopMenu.portraitPerson == null && shopOwner == null && !hatmouse)
+                if (Game1.currentLocation.Name == "WizardHouse")
+                    shopOwner = "Wizard";
+                if (shopMenu.portraitPerson == null && Game1.currentLocation.Name == "SeedShop")
+                    shopOwner = "Seed Catalogue";
+
+                if ((shopMenu.portraitPerson == null && shopOwner == null && !hatmouse) || hatmouse)
                     return;
 
                 Dictionary<ISalable, int[]> itemPriceAndStock = shopMenu.itemPriceAndStock;
                 List<ISalable> forSale = shopMenu.forSale;
 
-                if (config.JojaEnabled && shopOwner == "Joja")
+                List<string> vendors2 = new List<string>(config.VendorsPrice);
+                if (vendors2.Contains(shopOwner))
                 {
-                    if (config.JojaPrices)
+                    using (Dictionary<ISalable, int[]>.KeyCollection.Enumerator enumerator = itemPriceAndStock.Keys.GetEnumerator())
                     {
-                        using (Dictionary<ISalable, int[]>.KeyCollection.Enumerator enumerator = itemPriceAndStock.Keys.GetEnumerator())
+                        while (enumerator.MoveNext())
                         {
-                            while (enumerator.MoveNext())
-                            {
-                                ISalable now = enumerator.Current;
-                                int[] array = itemPriceAndStock[now];
-                                int price = now.salePrice();
-                                if (now.Name.EndsWith("Seeds") || now.Name.EndsWith("Bulb") || now.Name.EndsWith("Starter") && !now.Name.Equals("Grass Starter"))
-                                        array[0] = this.NewPrice(price);
-                            }
-                            string PricesUpdated = string.Format("Seed prices increased by {0} for {1}! Join us, thrive !", (object)config.PriceIncrease, (object)shopOwner);
-                            Monitor.Log(PricesUpdated, LogLevel.Trace);
+                            ISalable now = enumerator.Current;
+                            int[] array = itemPriceAndStock[now];
+                            int price = now.salePrice();
+                            if (now.Name.EndsWith("Seeds") || now.Name.EndsWith("Bulb") || now.Name.EndsWith("Starter") && !now.Name.Equals("Grass Starter"))
+                                array[0] = this.NewPrice(price);
                         }
+                        
                     }
-                    else
+
+                    List<ISalable> seeds = itemPriceAndStock.Keys.Where(item =>
+                        item is StardewValley.Object obj
+                        && obj.Category == StardewValley.Object.SeedsCategory
+                        && !exclusions.Contains(obj.ParentSheetIndex)
+                        && !item.Name.EndsWith("Sapling")).ToList();
+                    foreach(ISalable item in seeds)
                     {
-                        forSale.RemoveAll((ISalable sale) =>
-                        sale is Item item
-                        && item.Category == StardewValley.Object.SeedsCategory
-                        && !item.Name.EndsWith("Sapling")
-                        && !item.Name.Equals(config.Exceptions));
+                        int[] array = itemPriceAndStock[item];
+                        int price = item.salePrice();
+                        array[0] = this.NewPrice(price);
 
-                        List<ISalable> unwanted = itemPriceAndStock.Keys.Where(item =>
-                            item is StardewValley.Object obj
-                            && obj.Category == StardewValley.Object.SeedsCategory
-                            && !Exclusions.Contains(obj.ParentSheetIndex)
-                            && !item.Name.EndsWith("Sapling")).ToList();
-
-                        foreach (ISalable item in unwanted)
-                            itemPriceAndStock.Remove(item);
-                        shopMenu.setItemPriceAndStock(itemPriceAndStock);
-
-                        if (config.Exceptions != null)
-                        {
-                            string ex = string.Format("{0}", string.Join(", ", config.Exceptions));
-                            Monitor.Log(string.Format("Seeds removed from {0}, except for {1} !", (object)shopOwner, (object)ex, (LogLevel.Trace)));
-                        }
-                        else
-                            Monitor.Log(string.Format("Seeds removed from {0}!", (object)shopOwner, (LogLevel.Trace)));
+                        string PricesUpdated = string.Format("{0} price increased by {1} at {2}", (object)item.Name , (object)config.PriceIncrease, (object)shopOwner);
+                        Monitor.Log(PricesUpdated, LogLevel.Trace);
                     }
+                    shopMenu.setItemPriceAndStock(itemPriceAndStock);
                 }
 
-                if (config.PierreEnabled && shopMenu.portraitPerson != null && shopOwner == "Pierre")
+                List<string> vendors = new List<string>(config.VendorsWithoutSeeds);
+                if (vendors.Contains(shopOwner))
                 {
                     forSale.RemoveAll((ISalable sale) =>
                         sale is Item item
                         && item.Category == StardewValley.Object.SeedsCategory
                         && !item.Name.EndsWith("Sapling")
-                        && !item.Name.Equals(config.Exceptions));
+                        && !item.Name.Equals(config.CropExceptions));
 
-                    List<ISalable> unwanted = itemPriceAndStock.Keys.Where(item =>
+                    List<ISalable> seeds = itemPriceAndStock.Keys.Where(item =>
                         item is StardewValley.Object obj
                         && obj.Category == StardewValley.Object.SeedsCategory
-                        && !Exclusions.Contains(obj.ParentSheetIndex)
+                        && !exclusions.Contains(obj.ParentSheetIndex)
                         && !item.Name.EndsWith("Sapling")).ToList();
 
-                    foreach (ISalable item in unwanted)
+                    foreach (ISalable item in seeds)
                         itemPriceAndStock.Remove(item);
                     shopMenu.setItemPriceAndStock(itemPriceAndStock);
 
-                    if (config.Exceptions != null)
+                    if (config.CropExceptions != null)
                     {
-                        string ex = string.Format("{0}", string.Join(", ", config.Exceptions));
-                        Monitor.Log(string.Format("Seeds removed from {0}, except for {1} !", (object)shopOwner, (object)ex, (LogLevel.Trace)));
+                        string ex = string.Format("{0}", string.Join(", ", config.CropExceptions));
+                        Monitor.Log(string.Format("Seeds removed from {0}, except for {1}.", (object)shopOwner, (object)ex, (LogLevel.Trace)));
                     }
                     else
-                        Monitor.Log(string.Format("Seeds removed from {0}!", (object)shopOwner, (LogLevel.Trace)));
-                }
-
-                if (config.SandyEnabled && shopMenu.portraitPerson != null && shopOwner == "Sandy")
-                {
-                    forSale.RemoveAll((ISalable sale) =>
-                        sale is Item item
-                        && item.Category == StardewValley.Object.SeedsCategory
-                        && !item.Name.EndsWith("Sapling")
-                        && !item.Name.Equals(config.Exceptions));
-
-                    List<ISalable> unwanted = itemPriceAndStock.Keys.Where(item =>
-                        item is StardewValley.Object obj
-                        && obj.Category == StardewValley.Object.SeedsCategory
-                        && !Exclusions.Contains(obj.ParentSheetIndex)
-                        && !item.Name.EndsWith("Sapling")).ToList();
-
-                    foreach (ISalable item in unwanted)
-                        itemPriceAndStock.Remove(item);
-                    shopMenu.setItemPriceAndStock(itemPriceAndStock);
-
-                    if (config.Exceptions != null)
-                    {
-                        string ex = string.Format("{0}", string.Join(", ", config.Exceptions));
-                        Monitor.Log(string.Format("Seeds removed from {0}, except for {1} !", (object)shopOwner, (object)ex, (LogLevel.Trace)));
-                    }
-                    else
-                        Monitor.Log(string.Format("Seeds removed from {0}!", (object)shopOwner, (LogLevel.Trace)));
-                }
-
-                if (config.MarnieEnabled && shopMenu.portraitPerson != null && shopOwner == "Marnie")
-                {
-                    forSale.RemoveAll((ISalable sale) =>
-                        sale is Item item
-                        && item.Category == StardewValley.Object.SeedsCategory
-                        && !item.Name.EndsWith("Sapling")
-                        && !item.Name.Equals(config.Exceptions));
-
-                    List<ISalable> unwanted = itemPriceAndStock.Keys.Where(item =>
-                        item is StardewValley.Object obj
-                        && obj.Category == StardewValley.Object.SeedsCategory
-                        && !Exclusions.Contains(obj.ParentSheetIndex)
-                        && !item.Name.EndsWith("Sapling")).ToList();
-
-                    foreach (ISalable item in unwanted)
-                        itemPriceAndStock.Remove(item);
-                    shopMenu.setItemPriceAndStock(itemPriceAndStock);
-
-                    if (config.Exceptions != null)
-                    {
-                        string ex = string.Format("{0}", string.Join(", ", config.Exceptions));
-                        Monitor.Log(string.Format("Seeds removed from {0}, except for {1} !", (object)shopOwner, (object)ex, (LogLevel.Trace)));
-                    }
-                    else
-                        Monitor.Log(string.Format("Seeds removed from {0}!", (object)shopOwner, (LogLevel.Trace)));
-                }
-
-                if (config.ClintEnabled && shopMenu.portraitPerson != null && shopOwner == "Clint")
-                {
-                    forSale.RemoveAll((ISalable sale) =>
-                        sale is Item item
-                        && item.Category == StardewValley.Object.SeedsCategory
-                        && !item.Name.EndsWith("Sapling")
-                        && !item.Name.Equals(config.Exceptions));
-
-                    List<ISalable> unwanted = itemPriceAndStock.Keys.Where(item =>
-                        item is StardewValley.Object obj
-                        && obj.Category == StardewValley.Object.SeedsCategory
-                        && !Exclusions.Contains(obj.ParentSheetIndex)
-                        && !item.Name.EndsWith("Sapling")).ToList();
-
-                    foreach (ISalable item in unwanted)
-                        itemPriceAndStock.Remove(item);
-                    shopMenu.setItemPriceAndStock(itemPriceAndStock);
-
-                    if (config.Exceptions != null)
-                    {
-                        string ex = string.Format("{0}", string.Join(", ", config.Exceptions));
-                        Monitor.Log(string.Format("Seeds removed from {0}, except for {1} !", (object)shopOwner, (object)ex, (LogLevel.Trace)));
-                    }
-                    else
-                        Monitor.Log(string.Format("Seeds removed from {0}!", (object)shopOwner, (LogLevel.Trace)));
-                }
-
-                if (config.KrobusEnabled && shopMenu.portraitPerson != null && shopOwner == "Krobus")
-                {
-                    forSale.RemoveAll((ISalable sale) =>
-                        sale is Item item
-                        && item.Category == StardewValley.Object.SeedsCategory
-                        && !item.Name.EndsWith("Sapling")
-                        && !item.Name.Equals(config.Exceptions));
-
-                    List<ISalable> unwanted = itemPriceAndStock.Keys.Where(item =>
-                        item is StardewValley.Object obj
-                        && obj.Category == StardewValley.Object.SeedsCategory
-                        && !Exclusions.Contains(obj.ParentSheetIndex)
-                        && !item.Name.EndsWith("Sapling")).ToList();
-
-                    foreach (ISalable item in unwanted)
-                        itemPriceAndStock.Remove(item);
-                    shopMenu.setItemPriceAndStock(itemPriceAndStock);
-
-                    if (config.Exceptions != null)
-                    {
-                        string ex = string.Format("{0}", string.Join(", ", config.Exceptions));
-                        Monitor.Log(string.Format("Seeds removed from {0}, except for {1} !", (object)shopOwner, (object)ex, (LogLevel.Trace)));
-                    }
-                    else
-                        Monitor.Log(string.Format("Seeds removed from {0}!", (object)shopOwner, (LogLevel.Trace)));
-                }
-
-                if (config.MarlonEnabled && shopMenu.portraitPerson != null && shopOwner == "Marlon")
-                {
-                    forSale.RemoveAll((ISalable sale) =>
-                        sale is Item item
-                        && item.Category == StardewValley.Object.SeedsCategory
-                        && !item.Name.EndsWith("Sapling")
-                        && !item.Name.Equals(config.Exceptions));
-
-                    List<ISalable> unwanted = itemPriceAndStock.Keys.Where(item =>
-                        item is StardewValley.Object obj
-                        && obj.Category == StardewValley.Object.SeedsCategory
-                        && !Exclusions.Contains(obj.ParentSheetIndex)
-                        && !item.Name.EndsWith("Sapling")).ToList();
-
-                    foreach (ISalable item in unwanted)
-                        itemPriceAndStock.Remove(item);
-                    shopMenu.setItemPriceAndStock(itemPriceAndStock);
-
-                    if (config.Exceptions != null)
-                    {
-                        string ex = string.Format("{0}", string.Join(", ", config.Exceptions));
-                        Monitor.Log(string.Format("Seeds removed from {0}, except for {1} !", (object)shopOwner, (object)ex, (LogLevel.Trace)));
-                    }
-                    else
-                        Monitor.Log(string.Format("Seeds removed from {0}!", (object)shopOwner, (LogLevel.Trace)));
-                }
-
-                if (config.TravellingEnabled && shopOwner == "Travelling" || travelnight)
-                {
-                    forSale.RemoveAll((ISalable sale) =>
-                        sale is Item item
-                        && item.Category == StardewValley.Object.SeedsCategory
-                        && !item.Name.EndsWith("Sapling")
-                        && !item.Name.Equals(config.Exceptions));
-
-                    List<ISalable> unwanted = itemPriceAndStock.Keys.Where(item =>
-                        item is StardewValley.Object obj
-                        && obj.Category == StardewValley.Object.SeedsCategory
-                        && !Exclusions.Contains(obj.ParentSheetIndex)
-                        && !item.Name.EndsWith("Sapling")).ToList();
-
-                    foreach (ISalable item in unwanted)
-                        itemPriceAndStock.Remove(item);
-                    shopMenu.setItemPriceAndStock(itemPriceAndStock);
-
-                    if (config.Exceptions != null)
-                    {
-                        string ex = string.Format("{0}", string.Join(", ", config.Exceptions));
-                        Monitor.Log(string.Format("Seeds removed from {0}, except for {1} !", (object)shopOwner, (object)ex, (LogLevel.Trace)));
-                    }
-                    else
-                        Monitor.Log(string.Format("Seeds removed from {0}!", (object)shopOwner, (LogLevel.Trace)));
-                }
-
-                if (config.HarveyEnabled && shopOwner == "Harvey")
-                {
-                    forSale.RemoveAll((ISalable sale) =>
-                        sale is Item item
-                        && item.Category == StardewValley.Object.SeedsCategory
-                        && !item.Name.EndsWith("Sapling")
-                        && !item.Name.Equals(config.Exceptions));
-
-                    List<ISalable> unwanted = itemPriceAndStock.Keys.Where(item =>
-                        item is StardewValley.Object obj
-                        && obj.Category == StardewValley.Object.SeedsCategory
-                        && !Exclusions.Contains(obj.ParentSheetIndex)
-                        && !item.Name.EndsWith("Sapling")).ToList();
-
-                    foreach (ISalable item in unwanted)
-                        itemPriceAndStock.Remove(item);
-                    shopMenu.setItemPriceAndStock(itemPriceAndStock);
-
-                    if (config.Exceptions != null)
-                    {
-                        string ex = string.Format("{0}", string.Join(", ", config.Exceptions));
-                        Monitor.Log(string.Format("Seeds removed from {0}, except for {1} !", (object)shopOwner, (object)ex, (LogLevel.Trace)));
-                    }
-                    else
-                        Monitor.Log(string.Format("Seeds removed from {0}!", (object)shopOwner, (LogLevel.Trace)));
-                }
-
-                if(config.MagicBoatEnabled && shopOwner == "Magic Boat")
-                {
-                    if (config.MagicBoatPrices)
-                    {
-                        using (Dictionary<ISalable, int[]>.KeyCollection.Enumerator enumerator = itemPriceAndStock.Keys.GetEnumerator())
-                        {
-                            while (enumerator.MoveNext())
-                            {
-                                ISalable now = enumerator.Current;
-                                int[] array = itemPriceAndStock[now];
-                                int price = now.salePrice();
-                                if (now.Name.EndsWith("Seeds") || now.Name.EndsWith("Bulb") || now.Name.EndsWith("Starter"))
-                                    array[0] = this.NewPrice(price);
-                            }
-                            string PricesUpdated = string.Format("{0} has some seeds but since they're rare, they are {1} more expensive!", (object)shopOwner, (object)config.PriceIncrease);
-                            Monitor.Log(PricesUpdated, LogLevel.Trace);
-                        }
-                    }
-                    else
-                    {
-                        forSale.RemoveAll((ISalable sale) =>
-                            sale is Item item
-                            && item.Category == StardewValley.Object.SeedsCategory
-                            && !item.Name.EndsWith("Sapling")
-                            && !item.Name.Equals(config.Exceptions));
-
-                        List<ISalable> unwanted = itemPriceAndStock.Keys.Where(item =>
-                            item is StardewValley.Object obj
-                            && obj.Category == StardewValley.Object.SeedsCategory
-                            && !Exclusions.Contains(obj.ParentSheetIndex)
-                            && !item.Name.EndsWith("Sapling")).ToList();
-
-                        foreach (ISalable item in unwanted)
-                            itemPriceAndStock.Remove(item);
-                        shopMenu.setItemPriceAndStock(itemPriceAndStock);
-
-                        if (config.Exceptions != null)
-                        {
-                            string ex = string.Format("{0}", string.Join(", ", config.Exceptions));
-                            Monitor.Log(string.Format("Seeds removed from {0}, except for {1} !", (object)shopOwner, (object)ex, (LogLevel.Trace)));
-                        }
-                        else
-                            Monitor.Log(string.Format("Seeds removed from {0}!", (object)shopOwner, (LogLevel.Trace)));
-                    }
+                        Monitor.Log(string.Format("Seeds removed from {0}.", (object)shopOwner, (LogLevel.Trace)));
                 }
                 else return;
             }
@@ -425,7 +183,7 @@ namespace SeedShortage
         /// <param name="e">The event data.</param>
         private void ReturnedToTitle (object sender, ReturnedToTitleEventArgs e)
         {
-            this.Exclusions.Clear();
+            this.exclusions.Clear();
         }
         private int NewPrice (int price)
         {
