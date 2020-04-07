@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
@@ -118,18 +118,6 @@ namespace SeedShortage
                 List<string> vendors2 = new List<string>(config.VendorsPrice);
                 if (vendors2.Contains(shopOwner))
                 {
-                    using (Dictionary<ISalable, int[]>.KeyCollection.Enumerator enumerator = itemPriceAndStock.Keys.GetEnumerator())
-                    {
-                        while (enumerator.MoveNext())
-                        {
-                            ISalable now = enumerator.Current;
-                            int[] array = itemPriceAndStock[now];
-                            int price = now.salePrice();
-                            if (now.Name.EndsWith("Seeds") || now.Name.EndsWith("Bulb") || now.Name.EndsWith("Starter") && !now.Name.Equals("Grass Starter"))
-                                array[0] = this.NewPrice(price);
-                        }
-                    }
-
                     List<ISalable> seeds = itemPriceAndStock.Keys.Where(item =>
                         item is StardewValley.Object obj
                         && obj.Category == StardewValley.Object.SeedsCategory
